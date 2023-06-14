@@ -4,7 +4,6 @@
 // See https://hyper.is#cfg for all currently supported options.
 module.exports = {
     config: {
-
         hyperline: {
             plugins: [
                 "hostname",
@@ -19,14 +18,13 @@ module.exports = {
             borderColors: ['#00ffff','#0000ff'],
             adminBorderColors: ['#ff0000', '#ff0000']
         },
-
         // choose either `'stable'` for receiving highly polished,
         // or `'canary'` for less polished but more frequent updates
         updateChannel: 'stable',
         // default font size in pixels for all tabs
         fontSize: 12,
         // font family with optional fallbacks
-        fontFamily: 'JetBrainsMono Nerd Font Mono',
+        fontFamily: 'JetBrainsMono Nerd Font',
         // default font weight: 'normal' or 'bold'
         fontWeight: 'normal',
         // font weight for bold characters: 'normal' or 'bold'
@@ -106,14 +104,15 @@ module.exports = {
         // PowerShell on Windows
         // - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
         //
-        // Cygwin
-        // - Example: `C:\\cygwin64\\bin\\bash.exe`
-        shell: 'powershell.exe',
+        // this requires POWERSHELL 7
+        shell: 'pwsh.exe',
         // for setting shell arguments (i.e. for using interactive shellArgs: `['-i']`)
         // by default `['--login']` will be used
         shellArgs: [
             '-NoExit',
-            'C:\\Users\\wxc85\\Desktop\\startup.ps1',
+            '-Command',
+            'Set-PSReadlineOption -PredictionSource History &&',
+            'Invoke-Expression (&starship init powershell)',
         ],
         // for environment variables
         env: {},
@@ -124,7 +123,7 @@ module.exports = {
         // An absolute file path to a sound file on the machine.
         // bellSoundURL: '/path/to/sound/file',
         // if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
-        copyOnSelect: false,
+        copyOnSelect: true,
         // if `true` (without backticks and without quotes), hyper will be set as the default protocol client for SSH
         defaultSSHApp: true,
         // if `true` (without backticks and without quotes), on right click selected text will be copied or pasted if no
@@ -156,14 +155,14 @@ module.exports = {
     //   `hyperpower`
     //   `@company/project`
     //   `project#1.0.1`
-    plugins: ["hyperline", "hyperborder"],
+    plugins: ["hyperinator","hyper-midnight","hyperline", "hyperborder"],
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
     // to load it and avoid it being `npm install`ed
     localPlugins: [],
     keymaps: {
-    // Example
-    // 'window:devtools': 'cmd+alt+o',
+        // Example
+        // 'window:devtools': 'cmd+alt+o',
     },
 };
 //# sourceMappingURL=config-default.js.map

@@ -1,0 +1,5 @@
+windows:
+  - layout: 5162,237x48,0,0{118x48,0,0,152,118x48,119,0,153}
+    panes:
+      - stermc '-host=45.145.225.214' '-user=usr' '-pw=passw'
+      - stermc '-host=45.145.225.214' '-port=6000' '-user=usr' '-pw=passw'
