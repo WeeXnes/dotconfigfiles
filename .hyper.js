@@ -8,16 +8,23 @@ module.exports = {
             plugins: [
                 "hostname",
                 "ip",
-                "cpu",
                 "memory",
                 "network",
                 "battery"
             ]
         },
-        hyperBorder: {
-            borderColors: ['#00ffff','#0000ff'],
-            adminBorderColors: ['#ff0000', '#ff0000']
+        hyperTabs: {
+            closeAlign: 'right',
         },
+        hyperBorder: {
+            borderColors: ['#cb50ff','#301c40'],
+            adminBorderColors: ['#ff0000', '#301c40'],
+            borderWidth: '4px',
+            borderRadiusInner: '0px',
+            borderRadiusOuter: '0px'
+        },
+        windowSize: [800, 400],
+
         // choose either `'stable'` for receiving highly polished,
         // or `'canary'` for less polished but more frequent updates
         updateChannel: 'stable',
@@ -111,8 +118,7 @@ module.exports = {
         shellArgs: [
             '-NoExit',
             '-Command',
-            'Set-PSReadlineOption -PredictionSource History &&',
-            'Invoke-Expression (&starship init powershell)',
+            'Set-PSReadlineOption -PredictionSource History'
         ],
         // for environment variables
         env: {},
@@ -155,14 +161,18 @@ module.exports = {
     //   `hyperpower`
     //   `@company/project`
     //   `project#1.0.1`
-    plugins: ["hyperinator","hyper-midnight","hyperline", "hyperborder"],
+
+    plugins: ["hyperinator", "hyper-midnight", "hyperline", "hyper-tabs-enhanced", "hyperborder#2.0.1", "hyper-dnd-tabs", "hyperterm-dibdabs"],
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
     // to load it and avoid it being `npm install`ed
-    localPlugins: [],
+    localPlugins: ["HyperRichPresence"],
     keymaps: {
-        // Example
-        // 'window:devtools': 'cmd+alt+o',
+        "tab:new": "ctrl+n",
+        "editor:break": "ctrl+x",
+        "editor:copy": "ctrl+c",
+        "editor:paste": "ctrl+v",
+        "editor:search": "ctrl+f",
     },
 };
 //# sourceMappingURL=config-default.js.map
